@@ -74,6 +74,7 @@ describe('lake', () => {
       receiverId,
       followId,
       assetId: EOS_ASSET_ID,
+      opponentAssetId: XIN_ASSET_ID,
       amount: 0.1,
       slippage: 0.005,
     });
@@ -82,8 +83,8 @@ describe('lake', () => {
       receiverId,
       followId,
       assetId: XIN_ASSET_ID,
-      amount: 0.001_373_75,
-      slippage: 0.005,
+      opponentAssetId: EOS_ASSET_ID,
+      amount: 0.001_358_73,
     });
     console.log(xinTx);
     expect(eosTx.data.follow_id).toEqual(xinTx.data.follow_id);

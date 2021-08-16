@@ -55,6 +55,7 @@ export interface IAddLiquidityActionParams {
   receiverId: string;
   followId: string;
   assetId: string;
+  opponentAssetId: string;
   amount: number;
   slippage?: number;
   timeout?: number;

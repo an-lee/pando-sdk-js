@@ -107,13 +107,14 @@ export class PandoLake {
       receiverId,
       followId,
       assetId,
+      opponentAssetId,
       slippage = 0.001,
-      timeout = 300000,
+      timeout = 300,
       amount,
       brokerId,
       traceId,
     } = params;
-    const action = `1,${receiverId},${followId},${assetId},${slippage},${timeout}`;
+    const action = `1,${receiverId},${followId},${opponentAssetId},${slippage},${timeout}`;
     return this._createAction({
       action,
       amount,
