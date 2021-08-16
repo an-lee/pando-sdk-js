@@ -31,10 +31,53 @@ class PandoLake {
         return this.api.get(`api/stats/markets/${baseAssetId}/${quoteAssetId}`);
     }
     marketKline(params) {
-        const { baseAssetId, quoteAssetId, dur } = params;
+        const { baseAssetId, quoteAssetId, dur = '4320h' } = params;
         return this.api.get(`api/stats/markets/${baseAssetId}/${quoteAssetId}/kline/v2?dur=${dur}`);
     }
-    createAction(params) {
+    createAction(type, params) {
+        switch (type) {
+            case 'ADD':
+                return this.createAddLiquidityAction(params);
+            case 'REMOVE':
+                return this.createRemoveLiquidityAction(params);
+            case 'SWAP':
+                return this.createSwapAction(params);
+        }
+    }
+    createAddLiquidityAction(params) {
+        const { receiverId, followId, assetId, opponentAssetId, slippage = 0.001, timeout = 300, amount, brokerId, traceId, } = params;
+        const action = `1,${receiverId},${followId},${opponentAssetId},${slippage},${timeout}`;
+        return this._createAction({
+            action,
+            amount,
+            assetId,
+            brokerId,
+            traceId,
+        });
+    }
+    createRemoveLiquidityAction(params) {
+        const { receiverId, followId, assetId, amount, brokerId, traceId } = params;
+        const action = `2,${receiverId},${followId}`;
+        return this._createAction({
+            action,
+            amount,
+            assetId,
+            brokerId,
+            traceId: traceId || followId,
+        });
+    }
+    createSwapAction(params) {
+        const { receiverId, followId, assetId, fillAssetId, routes = '', minimum = '', amount, brokerId, traceId, } = params;
+        const action = `3,${receiverId},${followId},${fillAssetId},${routes},${minimum}`;
+        return this._createAction({
+            action,
+            amount,
+            assetId,
+            brokerId,
+            traceId: traceId || followId,
+        });
+    }
+    _createAction(params) {
         const { action, amount, assetId, brokerId = '', traceId } = params;
         return this.api.post('api/actions', {
             action,

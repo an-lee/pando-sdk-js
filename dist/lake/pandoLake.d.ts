@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { IAsset, IPair } from './types';
+import { IAddLiquidityActionParams, IAsset, IPair, IRemoveLiquidityActionParams, ISwapActionParams } from './types';
 export declare class PandoLake {
     api: AxiosInstance;
     constructor();
@@ -38,12 +38,48 @@ export declare class PandoLake {
     marketKline(params: {
         baseAssetId: string;
         quoteAssetId: string;
-        dur: string;
+        dur?: string;
     }): Promise<{
         ts: number;
         data: Array<[number, string, string]>;
     }>;
-    createAction(params: {
+    createAction(type: 'ADD' | 'REMOVE' | 'SWAP', params: IAddLiquidityActionParams | IRemoveLiquidityActionParams | ISwapActionParams): Promise<{
+        ts: number;
+        data: {
+            action: string;
+            code: string;
+            code_url: string;
+            follow_id: string;
+        };
+    }>;
+    createAddLiquidityAction(params: IAddLiquidityActionParams): Promise<{
+        ts: number;
+        data: {
+            action: string;
+            code: string;
+            code_url: string;
+            follow_id: string;
+        };
+    }>;
+    createRemoveLiquidityAction(params: IRemoveLiquidityActionParams): Promise<{
+        ts: number;
+        data: {
+            action: string;
+            code: string;
+            code_url: string;
+            follow_id: string;
+        };
+    }>;
+    createSwapAction(params: ISwapActionParams): Promise<{
+        ts: number;
+        data: {
+            action: string;
+            code: string;
+            code_url: string;
+            follow_id: string;
+        };
+    }>;
+    _createAction(params: {
         action: string;
         amount: number;
         assetId: string;
