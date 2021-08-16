@@ -51,8 +51,34 @@ export interface IAsset {
   };
 }
 
-export enum ActionType {
-  AddLiquidity = 1,
-  RemoveLiquidity = 2,
-  Swap = 3,
+export interface IAddLiquidityActionParams {
+  receiverId: string;
+  followId: string;
+  assetId: string;
+  amount: number;
+  slippage?: number;
+  timeout?: number;
+  brokerId?: string;
+  traceId?: string;
+}
+
+export interface IRemoveLiquidityActionParams {
+  receiverId: string;
+  followId: string;
+  assetId: string;
+  amount: number;
+  brokerId?: string;
+  traceId?: string;
+}
+
+export interface ISwapActionParams {
+  receiverId: string;
+  followId: string;
+  assetId: string;
+  fillAssetId: string;
+  amount: number;
+  routes?: string;
+  minimum?: string;
+  brokerId?: string;
+  traceId?: string;
 }
