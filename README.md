@@ -9,7 +9,7 @@ yarn add pando-sdk-js
 ```
 
 ```javascript
-const { PandoLake } from 'pando-sdk-js';
+import { PandoLake } from 'pando-sdk-js';
 
 const lake = new PandoLake;
 
