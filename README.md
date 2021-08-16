@@ -80,6 +80,7 @@ const xinTx = await lake.createAction('ADD', {
 console.log(xinTx.data.code_url);
 
 // Pando Lake remove liquidity
+const S_EOS_XIN_ASSET_ID = 'a9eafeea-d398-3bc7-8390-29479f438c8a';
 const followId = uuidv4();
 const tx = await lake.createAction('REMOVE', {
   receiverId,
@@ -90,3 +91,7 @@ const tx = await lake.createAction('REMOVE', {
 // use code_url to invoke transfer in Mixin Messenger to pay sEOS-XIN
 console.log(tx.data.code_url);
 ```
+
+## References
+
+- [Pando Docs](https://docs.pando.im/)

@@ -3,6 +3,10 @@
   "version": "0.1",
   "description": "Unoffical Pando Node.js SDK",
   "main": "dist/index.js",
+  "repository": "https://github.com/an-lee/pando-sdk-js.git",
+  "bugs": {
+    "url": "https://github.com/an-lee/pando-sdk-js/issues"
+  },
   "author": "an-lee <an.lee.work@gmail.com>",
   "license": "MIT",
   "private": false,
