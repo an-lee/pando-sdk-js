@@ -11,7 +11,7 @@ yarn add pando-sdk-js
 ```javascript
 import { PandoLake } from 'pando-sdk-js';
 
-const lake = new PandoLake;
+const lake = new PandoLake();
 
 // Pando Lake MTG info
 const info = lake.info();

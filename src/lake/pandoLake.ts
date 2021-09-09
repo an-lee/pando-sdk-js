@@ -81,6 +81,34 @@ export class PandoLake {
     );
   }
 
+  preOrder(params: {
+    payAssetId: string;
+    fillAssetId: string;
+    funds?: string;
+    amount?: string;
+  }): Promise<{
+    ts: number;
+    data: {
+      pay_asset_id: string;
+      fill_asset_id: string;
+      pay_amount: string;
+      fill_amount: string;
+      routes: string;
+      route_assets: [string];
+      funds: string;
+      amount: string;
+    };
+  }> {
+    const { payAssetId, fillAssetId, funds, amount } = params;
+
+    return this.api.post('api/orders/pre', {
+      pay_asset_id: payAssetId,
+      fill_asset_id: fillAssetId,
+      funds,
+      amount,
+    });
+  }
+
   createAction(
     type: 'ADD' | 'REMOVE' | 'SWAP',
     params:

@@ -3,25 +3,25 @@ export interface IPair {
   base_asset_id: string;
   quote_asset_id: string;
   // the amount of base and quote assets
-  base_amount: number;
-  quote_amount: number;
+  base_amount: string;
+  quote_amount: string;
   // the liquidity of this pair
-  liquidity: number;
+  liquidity: string;
   // the asset id of LP-Token of this pair
   liquidity_asset_id: string;
   // the route id of this pair
   route_id: number;
   // fee 0.3%
-  fee_percent: number;
-  max_liquidity: number;
-  base_value: number;
-  quote_value: number;
-  volume_24h: number;
-  fee_24h: number;
+  fee_percent: string;
+  max_liquidity: string;
+  base_value: string;
+  quote_value: string;
+  volume_24h: string;
+  fee_24h: string;
   transaction_count_24h: number;
   version: number;
-  base_volume_24h: number;
-  quote_volume_24h: number;
+  base_volume_24h: string;
+  quote_volume_24h: string;
 }
 
 export interface IAsset {
@@ -36,10 +36,10 @@ export interface IAsset {
   // chain asset entity
   chain: IAsset;
   // price in US Dollar
-  price: number;
+  price: string;
   // extra information of this assets
   extra: {
-    circulation: number;
+    circulation: string;
     name: string;
     explorer: string;
     intro: {
@@ -47,7 +47,7 @@ export interface IAsset {
     };
     website: string;
     issue: string;
-    total: number;
+    total: string;
   };
 }
 

@@ -53,6 +53,15 @@ describe('lake', () => {
     expect(res).toHaveProperty(['data', 0, 0]);
   });
 
+  it('create pre order', async () => {
+    const res = await lake.preOrder({
+      payAssetId: PANDO_ASSET_ID,
+      fillAssetId: BTC_ASSET_ID,
+      funds: '1',
+    });
+    expect(res).toHaveProperty(['data']);
+  });
+
   it('create swap action', async () => {
     const followId = uuidv4();
     // console.log('followId:', followId);
